@@ -1,0 +1,38 @@
+.menu {
+
+    max-width: 5%;
+}
+
+
+/* Defina o tamanho fixo da largura e altura da div */
+.fixed-container {
+    width: 300px;
+    /* Largura fixa de 300 pixels */
+    height: 200px;
+    /* Altura fixa de 200 pixels */
+    
+    /* border: 1px solid #000;*/
+}
+
+/* Garanta que os elementos dentro respeitem o tamanho da div pai */
+.fixed-container p {
+    max-width: 100%;
+    /* Largura máxima igual à largura da div pai */
+    max-height: 100%;
+    /* Altura máxima igual à altura da div pai */
+    overflow: hidden;
+    /* Oculte qualquer conteúdo que ultrapasse as dimensões especificadas */
+    margin: 0;
+    /* Remova margens padrão para evitar espaço extra */
+}
+
+.limites {
+    max-width: 100%;
+    /* Largura máxima igual à largura da div pai */
+    max-height: 100%;
+    /* Altura máxima igual à altura da div pai */
+    overflow: hidden;
+    /* Oculte qualquer conteúdo que ultrapasse as dimensões especificadas */
+    margin: 0;
+    /* Remova margens padrão para evitar espaço extra */
+}
