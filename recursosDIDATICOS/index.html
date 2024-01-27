@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Promedios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .curso {
+            margin-bottom: 10px;
+        }
+
+        .curso h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .curso p {
+            margin: 0;
+            color: #777;
+        }
+
+        .promedio {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+
+
+<script>
+    // Definir una función para calcular el promedio de un array de notas
+    function calcularPromedio(notas) {
+        if (notas.length === 0) {
+            return 0; // Si no hay notas, el promedio es cero
+        }
+
+        // Sumar todas las notas y dividir por la cantidad de notas
+        const suma = notas.reduce((total, nota) => total + nota, 0);
+        const promedio = suma / notas.length;
+
+        return promedio;
+    }
+
+    // Función principal para leer las notas y calcular los promedios por curso
+    function calcularPromediosPorCurso() {
+        const cursos = {}; // Objeto para almacenar las notas por curso y sus promedios
+
+        // Bucle para ingresar las notas por curso
+        while (true) {
+            const nombreCurso = prompt("Ingrese el nombre del curso (o escriba 'fin' para terminar):");
+
+            if (nombreCurso.toLowerCase() === 'fin') {
+                break; // Salir del bucle si se ingresa 'fin'
+            }
+
+            const notas = []; // Array para almacenar las notas del curso
+
+            // Bucle para ingresar las notas del curso
+            while (true) {
+                const nota = parseFloat(prompt(`Ingrese la nota para el curso ${nombreCurso} (o escriba 'fin' para terminar):`));
+
+                if (isNaN(nota) || nota < 0 || nota > 10) {
+                    alert("Por favor, ingrese una nota válida entre 0 y 10.");
+                } else {
+                    notas.push(nota); // Agregar la nota al array
+                }
+
+                const continuar = prompt("¿Desea ingresar otra nota? (sí/no)").toLowerCase();
+                if (continuar !== 'si') {
+                    break; // Salir del bucle si no se desea ingresar más notas
+                }
+            }
+
+            const promedioCurso = calcularPromedio(notas);
+            cursos[nombreCurso] = promedioCurso; // Almacenar el promedio en el objeto de cursos
+        }
+
+        // Mostrar los promedios por curso
+        for (const curso in cursos) {
+            const container = document.createElement('div');
+            container.classList.add('curso');
+
+            const heading = document.createElement('h2');
+            heading.textContent = curso;
+            container.appendChild(heading);
+
+            const notasText = document.createElement('p');
+            notasText.textContent = `Notas: ${cursos[curso].join(', ')}`;
+            container.appendChild(notasText);
+
+            const promedioText = document.createElement('p');
+            promedioText.classList.add('promedio');
+            promedioText.textContent = `Promedio: ${cursos[curso].toFixed(2)}`;
+            container.appendChild(promedioText);
+
+            document.body.appendChild(container);
+        }
+    }
+
+    // Llamar a la función principal
+    calcularPromediosPorCurso();
+</script>
+
+
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Calculadora de Promedios</h1>
+
+        <div class="curso">
+            <h2>Curso 1</h2>
+            <p>Notas: 8, 9, 7</p>
+            <p class="promedio">Promedio: 8.0</p>
+        </div>
+
+        <div class="curso">
+            <h2>Curso 2</h2>
+            <p>Notas: 6, 7, 8</p>
+            <p class="promedio">Promedio: 7.0</p>
+        </div>
+
+        <div class="curso">
+            <h2>Curso 3</h2>
+            <p>Notas: 9, 9, 10</p>
+            <p class="promedio">Promedio: 9.3</p>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+
+
+</html>
