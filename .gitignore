@@ -4,6 +4,11 @@ apagar
 .vscode/
 
 clase_1/node_modules
+clase_2/node_modules
+clase_3/node_modules
+#clase_4/node_modules
+*/node_modules
+
 
 .DS_STORE
 
